@@ -1,0 +1,52 @@
+body {
+    background-color: #FDF6F6;
+    color: #2E2B2B;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a:link {
+    color: #89c2bb;
+}
+
+h1, h2, h3, h4 {
+    color: #2E2B2B;
+}
+
+nav {
+    background-color: #2E2B2B;
+    color: #A5E9E1;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+nav a {
+    color: #A5E9E1;
+}
+
+nav a:hover {
+    background-color: #388186;
+}
+
+.quote {float: right}
+
+.bioimage {
+    float: right;
+    max-width: 100%;
+}
+
+.clear {clear: both;}
+
+.row1, .row2 {display: flex; padding: 20px; background-color: #ffffff; border-radius: 1em; margin: 20px;}
+.row1col1, .row1col2 {padding: 20px;}
+
+.row2 {flex-wrap: wrap;}
+
+.formlabel {font-weight: 800; margin-bottom: 2px;}
+
+@media only screen and (max-width: 850px) {
+    nav a {
+        display: block;
+        max-width: 100%;
+    }
+    span {display: none;}
+}
