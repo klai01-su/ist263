@@ -1,0 +1,43 @@
+.websitelogo {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-color: #C0FDFB;
+    font-family: "Noto Serif Display", serif;
+}
+
+nav {
+    display: flex;
+    text-align: center;
+    /* align-items: center; */
+    justify-content: space-evenly;
+    margin-bottom: 75px;
+}
+
+nav a {
+    color: #121619;
+}
+
+nav a:hover {
+    color: #22333B;
+}
+
+.column {
+    text-align: center;
+}
+
+.column h2 {
+    font-size: 35px;
+}
+
+.reviewscene {
+    width: 60%;
+}
+
+.reviewtext {
+    margin-inline: 27%;
+    text-align: left;
+    line-height: 30px;
+}
