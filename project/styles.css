@@ -41,3 +41,11 @@ nav a:hover {
     text-align: left;
     line-height: 30px;
 }
+
+@media only screen and (max-width: 850px){
+    .reviewtext {
+        margin-inline: 14%;
+        /* text-align: left; */
+        /* line-height: 30px; */
+    }
+}
