@@ -1,6 +1,9 @@
 body {
     background-color: #FDF6F6;
     color: #2E2B2B;
+}
+
+p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
