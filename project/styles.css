@@ -1,14 +1,19 @@
 .websitelogo {
     display: flex;
     justify-content: center;
+    color: #121619;
+}
+
+a:hover .websitelogo{
+    color: #717171;
 }
 
 a {
     text-decoration: none;
 }
 
-.websitelogo a {
-    color: #121619;
+.slogan {
+    font-style: italic;
 }
 
 body {
