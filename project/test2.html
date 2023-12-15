@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Latest Movie Reviews</title>
+        <style>
+            /* Add CSS styles for the image container */
+            .movie-image-container {
+                position: relative;
+                display: grid;
+                /* height: px; Set a fixed height for the grid boxes */
+                overflow: hidden; /* Ensure that the image doesn't exceed the container */
+                grid-column-gap: 60px;
+            }
+    
+            /* Add CSS styles for the dark overlay */
+            .dark-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for darkness */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+    
+            /* Add CSS styles for the movie title */
+            .movie-title {
+                color: white;
+                font-size: 1.2em;
+                text-align: center;
+            }
+    
+            /* Apply brightness filter on hover */
+            .movie-image-container:hover .dark-overlay {
+                opacity: 1;
+            }
+    
+            /* Apply object-fit and object-position to the images */
+            .movie-image-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Cover the container while maintaining aspect ratio */
+                object-position: center center; /* Center the image within the container */
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>Latest Movie Reviews</h1>
+
+        <div id="latestReviews"></div>
+
+        <script>
+            const movies = [
+                { title: "Oppenheimer", releaseYear: "2023", genres: ["War", "Historical","Thriller"], rating: 3.5, reviewdate: "2023-12-15" },
+                { title: "Mission: Impossible - Dead Reckoning Part One", releaseYear: "2023", genres: ["Action"], rating: 3.5, reviewdate: "2023-12-15"   },
+                { title: "Spider-Man: Across the Spider-Verse", releaseYear: "2023", genres: ["Action", "Animation"], rating: 4, reviewdate: "2023-12-15"  },
+                { title: "The Whale", releaseYear: "2022", genres: ["Drama"], rating: 3.5, reviewdate: "2023-12-15"  },
+                { title: "Tar", releaseYear: "2022", genres: ["Drama"], rating: 3.5, reviewdate: "2023-12-15"  },
+                { title: "Soul", releaseYear: "2020", genres: ["Animation","Comedy"], rating: 3.5, reviewdate: "2023-12-15"  },
+                { title: "The Wailing", releaseYear: "2016", genres: ["Horror"], rating: 4, reviewdate: "2023-12-05"  },
+                { title: "Nightcrawler", releaseYear: "2014", genres: ["Thriller"], rating: 4.5, reviewdate: "2023-12-15"  },
+                { title: "Whiplash", releaseYear: "2014", genres: ["Drama","Thriller"], rating: 5, reviewdate: "2023-11-05"  },
+                { title: "I Saw the Devil", releaseYear: "2010", genres: ["Thriller","Action"], rating: 5, reviewdate: "2023-11-05"  },
+            ];
+
+            // Sort movies by reviewdate in descending order
+            movies.sort((a, b) => new Date(b.reviewdate) - new Date(a.reviewdate));
+
+            // Get the three latest reviews
+            const latestReviews = movies.slice(0, 3);
+
+            // Display the three latest reviews on the HTML page
+            const latestReviewsElement = document.getElementById('latestReviews');
+            latestReviewsElement.innerHTML = '';
+
+            latestReviews.forEach(review => {
+                const imagePath = getImagePath(review.title, 'jpg');
+
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'movie-image-container'; // Add a class for styling
+                reviewElement.innerHTML = `
+                    <div class="dark-overlay">
+                        <p class="movie-title">${review.title}</p>
+                    </div>
+                    <img src="${imagePath}" alt="${review.title}" onerror="this.onerror=null; this.src='${getImagePath(review.title, 'png')}';">
+                `;
+                latestReviewsElement.appendChild(reviewElement);
+            });
+
+            // Function to generate the image path based on the movie title and file extension
+            function getImagePath(title, extension) {
+                const formattedTitle = title.toLowerCase().replace(/:/g, '-').replace(/ /g, '_');
+                return `project_images/${formattedTitle}.${extension}`;
+            }
+        </script>
+    </body>
+</html>
