@@ -125,6 +125,8 @@
 						const imageName = movie.title.toLowerCase().replace(/\s/g, '_').replace(/:/g, '-');
 						movieImage.src = `project_images/${imageName}.png`;
 
+						movieImage.alt = `${movie.title} stills/scene`;
+
 						movieImage.onerror = function () {
 							movieImage.src = `project_images/${imageName}.jpg`;
 						};
