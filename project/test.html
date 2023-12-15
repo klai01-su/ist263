@@ -12,15 +12,43 @@
 			}
 
 			.movie-box {
+				position: relative;
 				border: 1px solid #ccc;
 				padding: 10px;
 				text-align: center;
 				transition: background-color 0.3s ease;
+				overflow: hidden; /* Hide overflowing content */
 			}
-			
+
 			.movie-box:hover {
         		background-color: #ddd; /* Set the darker background color on hover */
     		}
+
+			.movie-box img {
+				width: 100%;
+				transition: filter 0.3s ease; /* Add a transition for the filter property */
+			}
+
+			.movie-box:hover img {
+				filter: brightness(70%); /* Reduce brightness on hover */
+			}
+
+			.movie-title {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				color: white;
+				font-weight: bold;
+				font-size: 16px;
+				text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Add text shadow for better visibility */
+				opacity: 0; /* Initially hide the title */
+				transition: opacity 0.3s ease;
+			}
+
+			.movie-box:hover .movie-title {
+				opacity: 1; /* Display the title on hover */
+			}
 
 			.form-container {
 				display: grid;
@@ -147,7 +175,6 @@
 				filteredMovies.forEach(movie => {
 					const movieBox = document.createElement('div');
 					movieBox.classList.add('movie-box');
-					// movieBox.textContent = movie.title;
 					
 
 					const movieImage = document.createElement('img');
@@ -161,7 +188,13 @@
 
 					movieImage.style.width = '80%';
 
+					const movieTitle = document.createElement('div');
+        			movieTitle.classList.add('movie-title');
+        			movieTitle.textContent = movie.title;
+
+
         			movieBox.appendChild(movieImage);
+					movieBox.appendChild(movieTitle);
 
 			
 					movieBox.addEventListener('click', function () {
