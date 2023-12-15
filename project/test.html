@@ -4,26 +4,31 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
+			.container {
+				max-width: 100%; /* Set your desired maximum width */
+				margin: 0 auto; /* Center the container */
+				padding: 20px; /* Add padding if needed */
+			}
 			.movie-container {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				gap: 15px;
-				margin-top: 20px;
+				grid-row-gap: 20px;
+				margin-top: 30px;
 			}
 
 			.movie-box {
-				display: inline-block; /* Set to inline-block to wrap around the image */
-				position: relative;
+				display: flex;
+    			flex-direction: column;
+    			align-items: center;
+    			position: relative;
 				border: 1px solid #ccc;
-				width: auto; /* Set your desired width */
-    			height: auto; /* Set your desired height */
-				transition: background-color 0.3s ease;
+				transition: background-color 1s ease;
 				overflow: hidden;
 			}
 			
 
 			.movie-box:hover {
-        		background-color: #ddd; /* Set the darker background color on hover */
+        		background-color: #FFFFFF; /* Set the darker background color on hover */
     		}
 
 			.movie-box img {
@@ -42,10 +47,11 @@
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
+				text-align: center;
 				color: white;
 				font-weight: bold;
-				font-size: 16px;
-				text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Add text shadow for better visibility */
+				font-size: 100%;
+				/* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); */
 				opacity: 0; /* Initially hide the title */
 				transition: opacity 0.3s ease;
 			}
@@ -61,13 +67,14 @@
 				margin-bottom: 20px;
 			}
 
+
 			.form-container div {
 				display: flex;
 				flex-direction: column;
 			}
 
 			.form-container label {
-				margin-bottom: 5px;
+				margin-bottom: 3px;
 			}
 
 			.form-container select,
@@ -75,212 +82,227 @@
 			.form-container button {
 				width: 100%;
 			}
+			
+			@media (max-width: 800px) {
+				.form-container {
+					grid-template-columns: 1fr;
+				}
+				.movie-title {
+					font-size: 30%;
+				}
+				.movie-container {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+
 		</style>
 		<title>Movie Filter</title>
 	</head>
 	<body>
-		<div class="form-container">
-			<div>
-				<label for="title">Movie Title:</label>
-				<input type="text" id="title" name="title">
+		<div class="container">
+			<div class="form-container">
+				<div>
+					<label for="title">Movie Title:</label>
+					<input type="text" id="title" name="title">
+				</div>
+
+				<div>
+					<label for="releaseDate">Release Date:</label>
+					<select id="releaseDate" name="releaseDate">
+						<option value="">All</option>
+						<option value="2000">2000</option>
+						<option value="2001">2001</option>
+						<option value="2002">2002</option>
+						<option value="2003">2003</option>
+						<option value="2004">2004</option>
+						<option value="2005">2005</option>
+						<option value="2006">2006</option>
+						<option value="2007">2007</option>
+						<option value="2008">2008</option>
+						<option value="2009">2009</option>
+						<option value="2010">2010</option>
+						<option value="2011">2011</option>
+						<option value="2012">2012</option>
+						<option value="2013">2013</option>
+						<option value="2014">2014</option>
+						<option value="2015">2015</option>
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019">2019</option>
+						<option value="2020">2020</option>
+						<option value="2021">2021</option>
+						<option value="2022">2022</option>
+						<option value="2023">2023</option>
+					</select>
+				</div>
+
+				<div>
+					<label for="genres">Genres:</label>
+					<select id="genres" name="genres">
+						<option value="">All</option>
+						<option value="action">Action</option>
+						<option value="comedy">Comedy</option>
+						<option value="drama">Drama</option>
+						<option value="horror">Horror</option>
+						<option value="sci-fi">Sci-Fi</option>
+						<option value="fantasy">Fantasy</option>
+						<option value="thriller">Thriller</option>
+						<option value="romance">Romance</option>
+						<option value="animation">Animation</option>
+						<option value="crime">Crime</option>
+						<option value="adventure">Adventure</option>
+						<option value="mystery">Mystery</option>
+						<option value="musical">Musical</option>
+						<option value="western">Western</option>
+						<option value="historical">Historical</option>
+						<option value="war">War</option>
+					</select>
+				</div>
+
+				<div>
+					<label for="orderBy">Order By:</label>
+					<select id="orderBy" name="orderBy">
+						<option value="">None</option>
+						<option value="newestrelease">Newest Release Date</option>
+						<option value="oldestrelease">Oldest Release Date</option>
+						<option value="highestrated">Highest Rated</option>
+						<option value="lowestrated">Lowest Rated</option>
+						<option value="az">A-Z</option>
+						<option value="za">Z-A</option>
+					</select>
+				</div>
 			</div>
 
-			<div>
-				<label for="releaseDate">Release Date:</label>
-				<select id="releaseDate" name="releaseDate">
-					<option value="">All</option>
-					<option value="2000">2000</option>
-					<option value="2001">2001</option>
-					<option value="2002">2002</option>
-					<option value="2003">2003</option>
-					<option value="2004">2004</option>
-					<option value="2005">2005</option>
-					<option value="2006">2006</option>
-					<option value="2007">2007</option>
-					<option value="2008">2008</option>
-					<option value="2009">2009</option>
-					<option value="2010">2010</option>
-					<option value="2011">2011</option>
-					<option value="2012">2012</option>
-					<option value="2013">2013</option>
-					<option value="2014">2014</option>
-					<option value="2015">2015</option>
-					<option value="2016">2016</option>
-					<option value="2017">2017</option>
-					<option value="2018">2018</option>
-					<option value="2019">2019</option>
-					<option value="2020">2020</option>
-					<option value="2021">2021</option>
-					<option value="2022">2022</option>
-					<option value="2023">2023</option>
-				</select>
+			<div class="movie-container" id="movieContainer">
 			</div>
 
-			<div>
-				<label for="genres">Genres:</label>
-				<select id="genres" name="genres">
-					<option value="">All</option>
-					<option value="action">Action</option>
-					<option value="comedy">Comedy</option>
-					<option value="drama">Drama</option>
-					<option value="horror">Horror</option>
-					<option value="sci-fi">Sci-Fi</option>
-					<option value="fantasy">Fantasy</option>
-					<option value="thriller">Thriller</option>
-					<option value="romance">Romance</option>
-					<option value="animation">Animation</option>
-					<option value="crime">Crime</option>
-					<option value="adventure">Adventure</option>
-					<option value="mystery">Mystery</option>
-					<option value="musical">Musical</option>
-					<option value="western">Western</option>
-					<option value="historical">Historical</option>
-					<option value="war">War</option>
-				</select>
-			</div>
-
-			<div>
-				<label for="orderBy">Order By:</label>
-				<select id="orderBy" name="orderBy">
-					<option value="">None</option>
-					<option value="newestrelease">Newest Release Date</option>
-					<option value="oldestrelease">Oldest Release Date</option>
-					<option value="highestrated">Highest Rated</option>
-					<option value="lowestrated">Lowest Rated</option>
-					<option value="az">A-Z</option>
-					<option value="za">Z-A</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="movie-container" id="movieContainer">
-		</div>
-
-		<script>
-			const movies = [
-				{ title: "Oppenheimer", releaseYear: "2023", genres: ["War", "Historical","Thriller"], rating: 3.5 },
-				{ title: "Mission: Impossible - Dead Reckoning Part One", releaseYear: "2023", genres: ["Action"], rating: 3.5 },
-				{ title: "Spider-Man: Across the Spider-Verse", releaseYear: "2023", genres: ["Action", "Animation"], rating: 4 },
-				{ title: "The Whale", releaseYear: "2022", genres: ["Drama"], rating: 3.5 },
-				{ title: "Tar", releaseYear: "2022", genres: ["Drama"], rating: 3.5 },
-				{ title: "Soul", releaseYear: "2020", genres: ["Animation","Comedy"], rating: 3.5 },
-				{ title: "The Wailing", releaseYear: "2016", genres: ["Horror"], rating: 4 },
-				{ title: "Nightcrawler", releaseYear: "2014", genres: ["Thriller"], rating: 4.5 },
-				{ title: "Whiplash", releaseYear: "2014", genres: ["Drama","Thriller"], rating: 5 },
-				{ title: "I Saw the Devil", releaseYear: "2010", genres: ["Thriller","Action"], rating: 5 },
-			];
-
-		
-			const movieContainer = document.getElementById('movieContainer');
-		
-			function renderMovies(filteredMovies) {
-				movieContainer.innerHTML = '';
-		
-				filteredMovies.forEach(movie => {
-					const movieBox = document.createElement('div');
-					movieBox.classList.add('movie-box');
-					
-
-					const movieImage = document.createElement('img');
-					const imageName = movie.title.toLowerCase().replace(/\s/g, '_').replace(/:/g, '-');
-					movieImage.src = `project_images/${imageName}.png`;
-
-					movieImage.onerror = function () {
-						movieImage.src = `project_images/${imageName}.jpg`;
-					};
-
-					movieImage.style.width = '80%';
-
-					const movieTitle = document.createElement('div');
-        			movieTitle.classList.add('movie-title');
-        			movieTitle.textContent = movie.title;
-
-
-        			movieBox.appendChild(movieImage);
-					movieBox.appendChild(movieTitle);
+			<script>
+				const movies = [
+					{ title: "Oppenheimer", releaseYear: "2023", genres: ["War", "Historical","Thriller"], rating: 3.5 },
+					{ title: "Mission: Impossible - Dead Reckoning Part One", releaseYear: "2023", genres: ["Action"], rating: 3.5 },
+					{ title: "Spider-Man: Across the Spider-Verse", releaseYear: "2023", genres: ["Action", "Animation"], rating: 4 },
+					{ title: "The Whale", releaseYear: "2022", genres: ["Drama"], rating: 3.5 },
+					{ title: "Tar", releaseYear: "2022", genres: ["Drama"], rating: 3.5 },
+					{ title: "Soul", releaseYear: "2020", genres: ["Animation","Comedy"], rating: 3.5 },
+					{ title: "The Wailing", releaseYear: "2016", genres: ["Horror"], rating: 4 },
+					{ title: "Nightcrawler", releaseYear: "2014", genres: ["Thriller"], rating: 4.5 },
+					{ title: "Whiplash", releaseYear: "2014", genres: ["Drama","Thriller"], rating: 5 },
+					{ title: "I Saw the Devil", releaseYear: "2010", genres: ["Thriller","Action"], rating: 5 },
+				];
 
 			
-					movieBox.addEventListener('click', function () {
-						switch (movie.title.toLowerCase()) {
-							case 'oppenheimer':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/';
-								break;
-							case 'mission: impossible - dead reckoning part one':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/';
-								break;
-							case 'spider-man: across the spider-verse':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/';
-								break;
-							case 'the whale':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/';
-								break;
-							case 'tar':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/';
-								break;
-							case 'soul':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/';
-								break;
-							case 'the wailing':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/the-wailing-review.html';
-								break;
-							case 'nightcrawler':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/';
-								break;
-							case 'whiplash':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/whiplash-review.html';
-								break;
-							case 'i saw the devil':
-								window.location.href = 'https://klai01-su.github.io/ist263/project/i-saw-the-devil-review.html';
-								break;
-                        	// default:
-                        	//     window.location.href = 'https://www.example.com';
-                        	//     break;
-                    	}
-                	});
-					
-					movieContainer.appendChild(movieBox);
-				});
-			}
-		
-			function applyFilters() {
-				const titleFilter = document.getElementById('title').value.toLowerCase();
-				const releaseYearFilter = document.getElementById('releaseDate').value;
-				const genreFilter = document.getElementById('genres').value.toLowerCase();
-				const orderByFilter = document.getElementById('orderBy').value;
+				const movieContainer = document.getElementById('movieContainer');
 			
-				const filteredMovies = movies.filter(movie => {
-				const titleMatch = movie.title.toLowerCase().includes(titleFilter);
-				const releaseYearMatch = releaseYearFilter === '' || movie.releaseYear === releaseYearFilter;
-				const genreMatch = genreFilter === '' || movie.genres.some(genre => genre.toLowerCase() === genreFilter);
+				function renderMovies(filteredMovies) {
+					movieContainer.innerHTML = '';
+			
+					filteredMovies.forEach(movie => {
+						const movieBox = document.createElement('div');
+						movieBox.classList.add('movie-box');
+						
+
+						const movieImage = document.createElement('img');
+						const imageName = movie.title.toLowerCase().replace(/\s/g, '_').replace(/:/g, '-');
+						movieImage.src = `project_images/${imageName}.png`;
+
+						movieImage.onerror = function () {
+							movieImage.src = `project_images/${imageName}.jpg`;
+						};
+
+						movieImage.style.width = '80%';
+
+						const movieTitle = document.createElement('div');
+						movieTitle.classList.add('movie-title');
+						movieTitle.textContent = movie.title;
 
 
-				return titleMatch && releaseYearMatch && genreMatch;
-			});
+						movieBox.appendChild(movieImage);
+						movieBox.appendChild(movieTitle);
 
-				if (orderByFilter === 'newestrelease') {
-					filteredMovies.sort((a, b) => b.releaseYear.localeCompare(a.releaseYear));
-				} else if (orderByFilter === 'oldestrelease') {
-					filteredMovies.sort((a, b) => a.releaseYear.localeCompare(b.releaseYear));
-				} else if (orderByFilter === 'highestrated') {
-					filteredMovies.sort((a, b) => b.rating - a.rating);
-				} else if (orderByFilter === 'lowestrated') {
-					filteredMovies.sort((a, b) => a.rating - b.rating);
-				} else if (orderByFilter === 'az') {
-					filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
-				} else if (orderByFilter === 'za') {
-					filteredMovies.sort((a, b) => b.title.localeCompare(a.title));
+				
+						movieBox.addEventListener('click', function () {
+							switch (movie.title.toLowerCase()) {
+								case 'oppenheimer':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/';
+									break;
+								case 'mission: impossible - dead reckoning part one':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/';
+									break;
+								case 'spider-man: across the spider-verse':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/';
+									break;
+								case 'the whale':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/';
+									break;
+								case 'tar':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/';
+									break;
+								case 'soul':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/';
+									break;
+								case 'the wailing':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/the-wailing-review.html';
+									break;
+								case 'nightcrawler':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/';
+									break;
+								case 'whiplash':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/whiplash-review.html';
+									break;
+								case 'i saw the devil':
+									window.location.href = 'https://klai01-su.github.io/ist263/project/i-saw-the-devil-review.html';
+									break;
+								// default:
+								//     window.location.href = 'https://www.example.com';
+								//     break;
+							}
+						});
+						
+						movieContainer.appendChild(movieBox);
+					});
 				}
-		
+			
+				function applyFilters() {
+					const titleFilter = document.getElementById('title').value.toLowerCase();
+					const releaseYearFilter = document.getElementById('releaseDate').value;
+					const genreFilter = document.getElementById('genres').value.toLowerCase();
+					const orderByFilter = document.getElementById('orderBy').value;
+				
+					const filteredMovies = movies.filter(movie => {
+					const titleMatch = movie.title.toLowerCase().includes(titleFilter);
+					const releaseYearMatch = releaseYearFilter === '' || movie.releaseYear === releaseYearFilter;
+					const genreMatch = genreFilter === '' || movie.genres.some(genre => genre.toLowerCase() === genreFilter);
 
-				renderMovies(filteredMovies);
-			}
-		
-			renderMovies(movies);
 
-			document.getElementById('title').addEventListener('input', applyFilters);
-			document.getElementById('releaseDate').addEventListener('change', applyFilters);
-			document.getElementById('genres').addEventListener('change', applyFilters);
-			document.getElementById('orderBy').addEventListener('change', applyFilters);
-		</script>
+					return titleMatch && releaseYearMatch && genreMatch;
+				});
+
+					if (orderByFilter === 'newestrelease') {
+						filteredMovies.sort((a, b) => b.releaseYear.localeCompare(a.releaseYear));
+					} else if (orderByFilter === 'oldestrelease') {
+						filteredMovies.sort((a, b) => a.releaseYear.localeCompare(b.releaseYear));
+					} else if (orderByFilter === 'highestrated') {
+						filteredMovies.sort((a, b) => b.rating - a.rating);
+					} else if (orderByFilter === 'lowestrated') {
+						filteredMovies.sort((a, b) => a.rating - b.rating);
+					} else if (orderByFilter === 'az') {
+						filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
+					} else if (orderByFilter === 'za') {
+						filteredMovies.sort((a, b) => b.title.localeCompare(a.title));
+					}
+			
+
+					renderMovies(filteredMovies);
+				}
+			
+				renderMovies(movies);
+
+				document.getElementById('title').addEventListener('input', applyFilters);
+				document.getElementById('releaseDate').addEventListener('change', applyFilters);
+				document.getElementById('genres').addEventListener('change', applyFilters);
+				document.getElementById('orderBy').addEventListener('change', applyFilters);
+			</script>
+		</div>
 	</body>
 </html>
