@@ -147,21 +147,23 @@
 				filteredMovies.forEach(movie => {
 					const movieBox = document.createElement('div');
 					movieBox.classList.add('movie-box');
-					movieBox.textContent = movie.title;
+					// movieBox.textContent = movie.title;
 					
+
 					const movieImage = document.createElement('img');
-					const imageName = movie.title.toLowerCase().replace(/\s+/g, '_').replace(/:/g, '-');
-					const imageExtension = getImageExtension(imageName);
-					movieImage.src = `project_images/${imageName}.${imageExtension}`;
+					const imageName = movie.title.toLowerCase().replace(/\s/g, '_').replace(/:/g, '-'); // Replace spaces with underscores and colons with dashes
+					movieImage.src = `project_images/${imageName}.png`; // PNG fallback
 
-					movieImage.style.width = '80%'; // Adjust the percentage as needed
+					// Check if the PNG image exists, if not, use JPG as a fallback
+					movieImage.onerror = function () {
+						movieImage.src = `project_images/${imageName}.jpg`;
+					};
 
-        			// Add the img element to the movieBox
+					movieImage.style.width = '80%';
+
         			movieBox.appendChild(movieImage);
 
-					
-
-
+			
 					movieBox.addEventListener('click', function () {
 						switch (movie.title.toLowerCase()) {
 							case 'oppenheimer':
@@ -202,13 +204,6 @@
 					
 					movieContainer.appendChild(movieBox);
 				});
-			}
-
-			function getImageExtension(imageName) {
-		    // You can add more logic to determine the extension based on your naming convention
-    		// For simplicity, assume PNG as default and check for JPG
-    			return imageName.includes('mission_impossible') ? 'jpg' : 'png';
-    		// Adjust the logic as needed for your specific use case
 			}
 		
 			function applyFilters() {
