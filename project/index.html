@@ -16,95 +16,56 @@
             <a href="http://klai01-su.github.io/ist263/project/">Latest Reviews</a>
             <a href="http://klai01-su.github.io/ist263/project/all-movie-reviews.html">All Movie Reviews</a>
         </nav>
-        <div class="column">
-            <h4 class="slogan">"Come back when you've watched it!"</h3>
-            <div class="container">
-                <h1>Latest Movie Reviews</h1>
+        <div class="container">
+            <h2>Latest Movie Reviews</h1>
 
-                <div id="latestReviews"></div>
+            <div id="latestReviews"></div>
 
-                <script>
-                    const movies = [
-                        { title: "Oppenheimer", releaseYear: "2023", genres: ["War", "Historical","Thriller"], rating: 3.5, reviewdate: "2023-12-15" },
-                        { title: "Mission: Impossible - Dead Reckoning Part One", releaseYear: "2023", genres: ["Action"], rating: 3.5, reviewdate: "2023-12-15"   },
-                        { title: "Spider-Man: Across the Spider-Verse", releaseYear: "2023", genres: ["Action", "Animation"], rating: 4, reviewdate: "2023-12-15"  },
-                        { title: "The Whale", releaseYear: "2022", genres: ["Drama"], rating: 3.5, reviewdate: "2023-12-15"  },
-                        { title: "Tar", releaseYear: "2022", genres: ["Drama"], rating: 3.5, reviewdate: "2023-12-15"  },
-                        { title: "Soul", releaseYear: "2020", genres: ["Animation","Comedy"], rating: 3.5, reviewdate: "2023-12-15"  },
-                        { title: "The Wailing", releaseYear: "2016", genres: ["Horror"], rating: 4, reviewdate: "2023-12-05"  },
-                        { title: "Nightcrawler", releaseYear: "2014", genres: ["Thriller"], rating: 4.5, reviewdate: "2023-12-15"  },
-                        { title: "Whiplash", releaseYear: "2014", genres: ["Drama","Thriller"], rating: 5, reviewdate: "2023-11-05"  },
-                        { title: "I Saw the Devil", releaseYear: "2010", genres: ["Thriller","Action"], rating: 5, reviewdate: "2023-11-05"  },
-                    ];
+            <script>
+                const movies = [
+                    { title: "Oppenheimer", releaseYear: "2023", genres: ["War", "Historical","Thriller"], rating: 3.5, reviewdate: "2023-12-15" },
+                    { title: "Mission: Impossible - Dead Reckoning Part One", releaseYear: "2023", genres: ["Action"], rating: 3.5, reviewdate: "2023-12-15"   },
+                    { title: "Spider-Man: Across the Spider-Verse", releaseYear: "2023", genres: ["Action", "Animation"], rating: 4, reviewdate: "2023-12-15"  },
+                    { title: "The Whale", releaseYear: "2022", genres: ["Drama"], rating: 3.5, reviewdate: "2023-12-15"  },
+                    { title: "Tar", releaseYear: "2022", genres: ["Drama"], rating: 3.5, reviewdate: "2023-12-15"  },
+                    { title: "Soul", releaseYear: "2020", genres: ["Animation","Comedy"], rating: 3.5, reviewdate: "2023-12-15"  },
+                    { title: "The Wailing", releaseYear: "2016", genres: ["Horror"], rating: 4, reviewdate: "2023-12-05"  },
+                    { title: "Nightcrawler", releaseYear: "2014", genres: ["Thriller"], rating: 4.5, reviewdate: "2023-12-15"  },
+                    { title: "Whiplash", releaseYear: "2014", genres: ["Drama","Thriller"], rating: 5, reviewdate: "2023-11-05"  },
+                    { title: "I Saw the Devil", releaseYear: "2010", genres: ["Thriller","Action"], rating: 5, reviewdate: "2023-11-05"  },
+                ];
 
-                    // Sort movies by reviewdate in descending order
-                    movies.sort((a, b) => new Date(b.reviewdate) - new Date(a.reviewdate));
+                // Sort movies by reviewdate in descending order
+                movies.sort((a, b) => new Date(b.reviewdate) - new Date(a.reviewdate));
 
-                    // Get the three latest reviews
-                    const latestReviews = movies.slice(0, 3);
+                // Get the three latest reviews
+                const latestReviews = movies.slice(0, 3);
 
-                    // Display the three latest reviews on the HTML page
-                    const latestReviewsElement = document.getElementById('latestReviews');
-                    latestReviewsElement.innerHTML = '';
+                // Display the three latest reviews on the HTML page
+                const latestReviewsElement = document.getElementById('latestReviews');
+                latestReviewsElement.innerHTML = '';
 
-                    latestReviews.forEach(review => {
-                        const imagePath = getImagePath(review.title, 'jpg');
+                latestReviews.forEach(review => {
+                    const imagePath = getImagePath(review.title, 'jpg');
 
-                        const reviewElement = document.createElement('div');
-                        reviewElement.className = 'movie-image-container'; // Add a class for styling
-                        reviewElement.innerHTML = `
-                            <div class="dark-overlay">
-                                <p class="movie-title">${review.title}</p>
-                            </div>
-                            <img src="${imagePath}" alt="${review.title}" onerror="this.onerror=null; this.src='${getImagePath(review.title, 'png')}';">
-                        `;
-                        latestReviewsElement.appendChild(reviewElement);
-                    });
+                    const reviewElement = document.createElement('div');
+                    reviewElement.className = 'movie-image-container'; // Add a class for styling
+                    reviewElement.innerHTML = `
+                        <div class="dark-overlay">
+                            <p class="movie-title">${review.title}</p>
+                        </div>
+                        <img src="${imagePath}" alt="${review.title}" onerror="this.onerror=null; this.src='${getImagePath(review.title, 'png')}';">
+                    `;
+                    latestReviewsElement.appendChild(reviewElement);
+                });
 
-                    // Function to generate the image path based on the movie title and file extension
-                    function getImagePath(title, extension) {
-                        const formattedTitle = title.toLowerCase().replace(/:/g, '-').replace(/ /g, '_');
-                        return `project_images/${formattedTitle}.${extension}`;
-                    }
-                </script>
-            </div>
-
-
-
-
-            <!-- <h3>Latest Reviews</h3>
-            <div class="row1">
-                <div>
-                    <a href="http://klai01-su.github.io/ist263/project/the-wailing-review.html"><img src="project_images/the_wailing.jpg" alt="the wailing still" width="50%"></a>
-                </div>
-                <div>
-                    <strong>The Wailing: "You Think You Know the Answer but You Don't"</strong><br>
-                    "The answer would be revealed, even with the continue questioning of uncertainty..."
-                </div>
-                <hr>
-            </div>
-            <div class="row2">
-                <div>
-                    <a href="http://klai01-su.github.io/ist263/project/whiplash-review.html"><img src="project_images/whiplash.png" alt="whiplash still" width="50%"></a>
-                </div>
-                <div>
-                    <strong>Whiplash: "The Price of Greatness"</strong><br>
-                    "The path to perfection is never an easy one..."
-                </div>
-                <hr>
-            </div>
-            <div class="row3">
-                <div>
-                    <a href="http://klai01-su.github.io/ist263/project/i-saw-the-devil-review.html"><img src="project_images/i_saw_the_devil.png" alt="i saw the devil still" width="50%"></a>
-                </div>
-                <div>
-                    <strong>I Saw the Devil: "The Perfect Revenge Story"</strong><br>
-                    "What would you do when you find out your loved one is brutally..."
-                </div>
-            </div>
-            <hr>
-            <br>
-        </div>     -->
+                // Function to generate the image path based on the movie title and file extension
+                function getImagePath(title, extension) {
+                    const formattedTitle = title.toLowerCase().replace(/:/g, '-').replace(/ /g, '_');
+                    return `project_images/${formattedTitle}.${extension}`;
+                }
+            </script>
+        </div>
         <footer>
             <hr>
             Kaz Talks Movies &copy; Copyright 2023 
