@@ -24,13 +24,13 @@ body {
 nav {
     display: flex;
     text-align: center;
-    /* align-items: center; */
-    justify-content: space-evenly;
+    justify-content: center;
     margin-bottom: 75px;
 }
 
 nav a {
     color: #121619;
+    margin-inline: 2%;
 }
 
 nav a:hover {
@@ -58,9 +58,12 @@ nav a:hover {
 
 @media only screen and (max-width: 850px){
     .reviewtext {
-        margin-inline: 14%;
+        margin-inline: 8%;
         /* text-align: left; */
         /* line-height: 30px; */
+    }
+    .reviewscene {
+        width: 80%;
     }
 }
 
