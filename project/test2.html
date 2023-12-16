@@ -78,7 +78,7 @@
                 latestReviews.forEach(review => {
                 const imagePath = getImagePath(review.title, 'jpg');
                 const formattedTitle = review.title.toLowerCase().replace(/:/g, '-').replace(/ /g, '_');
-                const reviewPageURL = `review_pages/${formattedTitle}-review.html`; // Adjust the path as needed
+                const reviewPageURL = `${formattedTitle}-review.html`; // Adjust the path as needed
 
                 const reviewElement = document.createElement('div');
                 reviewElement.className = 'movie-image-container'; // Add a class for styling
