@@ -202,3 +202,15 @@ nav a:hover {
     object-fit: cover;
     object-position: center center;
 }
+
+.half-star {
+    position: relative;
+    color: #000000; /* Set the star color */
+  }
+
+.half-star::before {
+    content: '\2605'; /* Unicode character for a black star */
+    position: absolute;
+    clip: rect(0, 0.5em, 2em, 0);
+    color: inherit;
+}
