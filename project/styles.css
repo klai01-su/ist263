@@ -78,7 +78,7 @@ nav a:hover {
     grid-row-gap: 30px;
     grid-column-gap: 30px;
     margin-top: 30px;
-    cursor: pointer;
+    
 }
 
 .movie-box {
@@ -88,6 +88,7 @@ nav a:hover {
     position: relative;
     transition: background-color 1s ease;
     overflow: hidden;
+    cursor: pointer;
 }
 
 
